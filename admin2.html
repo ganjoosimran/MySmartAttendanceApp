@@ -1,0 +1,100 @@
+<!--<?php
+session_start();
+?>-->
+<html>
+<title>SmartAttendance</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="css/homecss.css">
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/teacher.css">
+<body>
+
+<!-- Navigation Bar -->
+        <div class="w3-bar w3-black w3-large">
+          <a href="#" class="w3-bar-item w3-button w3-mobile">Admin's Portal</a>
+          <a href="index.html" class="w3-bar-item w3-button w3-right w3-green w3-mobile">Logout</a>
+        </div>
+<div class="bgimg w3-display-container w3-text-white">
+ <div class="w3-display-middle " style="white-space:nowrap;">
+      <span class="w3-center w3-padding w3-black w3-xlarge  w3-animate-opacity">MY <span class="w3-hide-small"> SMART</span> ATTENDANCE</span>
+  </div>
+  <div class="w3-display-topleft w3-container w3-large">
+  	<p><button onclick="document.getElementById('delTeacher').style.display='block'" class="w3-button w3-green">Delete Teacher</button></p>
+    <p><button onclick="document.getElementById('delStudent').style.display='block'" class="w3-button w3-green">Delete Student</button></p>
+ </div>
+  
+    </div>
+
+<!--<?php
+$mysqli=new mysqli('localhost','root','','attendance');
+if($_SERVER['REQUEST_METHOD']=="POST"){
+
+    $TID=mysqli_real_escape_string($mysqli, $_REQUEST['TID']);
+        
+    $sql="DELETE FROM teacher where TID='$TID'";
+        if ($mysqli->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+}
+
+mysqli_close($mysqli);
+}
+ ?>-->
+<!-- Delete Teacher Modal -->
+<div id="delTeacher" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-green">
+      <span onclick="document.getElementById('delTeacher').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Delete Teacher</h1>
+    </div>
+    <div class="w3-container">
+      <p>Enter ID to delete:</p>
+      <form action="" method="POST" >
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="ID" name="TID" required></p>
+             <p><button class="w3-button w3-green" type="submit">SUBMIT</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!--<?php
+$mysqli=new mysqli('localhost','root','','attendance');
+if($_SERVER['REQUEST_METHOD']=="GET"){
+
+    $USN=mysqli_real_escape_string($mysqli, $_REQUEST['USN']);
+        
+    $sql="DELETE FROM student where USN='$USN'";
+        if ($mysqli->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+}
+
+mysqli_close($mysqli);
+}
+?>-->
+
+<!-- Delete Student Modal -->
+<div id="delStudent" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-green">
+      <span onclick="document.getElementById('delStudent').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Delete Student</h1>
+    </div>
+    <div class="w3-container">
+      <p>Enter ID to delete:</p>
+      <form action="" method="GET">
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" name="USN" placeholder="ID" required></p>
+             <p><button class="w3-button w3-green" type="submit">SUBMIT</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+

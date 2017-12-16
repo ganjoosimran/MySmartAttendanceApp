@@ -1,0 +1,121 @@
+
+<!--<?php
+
+session_start();
+?>-->
+<html>
+<title>SmartAttendance</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="css/homecss.css">
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/teacher.css">
+<body>
+
+<!-- Navigation Bar -->
+        <div class="w3-bar w3-black w3-large">
+          <a href="#" class="w3-bar-item w3-button w3-mobile">Admin's Portal</a>
+          <a href="index.html" class="w3-bar-item w3-button w3-right w3-green w3-mobile">Logout</a>
+        </div>
+<div class="bgimg w3-display-container w3-text-white">
+ <div class="w3-display-middle " style="white-space:nowrap;">
+      <span class="w3-center w3-padding w3-black w3-xlarge  w3-animate-opacity">MY <span class="w3-hide-small"> SMART</span> ATTENDANCE</span>
+  </div>
+  <div class="w3-display-topleft w3-container w3-large">
+  	<p><button onclick="document.getElementById('addTeacher').style.display='block'" class="w3-button w3-green">Add Teacher</button></p>
+    <p><button onclick="document.getElementById('addStudent').style.display='block'" class="w3-button w3-green">Add Student</button></p>
+    <a href="admin2.html" class="w3-button w3-green">Delete</a>
+        </div>
+   </div>
+  
+
+<!--<?php
+
+$mysqli=new mysqli('localhost','root','','attendance');
+if($_SERVER['REQUEST_METHOD']=="POST"){
+
+     $TID=$mysqli->real_escape_string($_POST['TID']);
+    $TNAME=$mysqli->real_escape_string($_POST['TNAME']);
+    $DEPTID=$mysqli->real_escape_string($_POST['DEPTID']);
+    $Pass=$mysqli->real_escape_string($_POST['Pass']);
+        
+    $sql="INSERT INTO teacher values('$TID', '$TNAME', '$DEPTID', '$Pass')";
+        if ($mysqli->query($sql) === TRUE) {
+    echo "Record added successfully";
+} else {
+    echo "Error: Password cannot be null " . $sql . "<br>" . mysqli_error($mysqli);
+}
+
+mysqli_close($mysqli);
+}
+ ?>-->
+    
+ 
+<!-- Add Teacher Modal -->
+<div id="addTeacher" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-green">
+      <span onclick="document.getElementById('addTeacher').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Add Teacher</h1>
+    </div>
+    <div class="w3-container">
+      <p>Enter Details:</p>
+       
+      <form method="POST" action="" >
+        <p><input class="w3-input w3-padding-16 w3-border" name="TID" type="text" placeholder="TID" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" name="TNAME" type="text" placeholder="Name" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" name="DEPTID" type="text" placeholder="DeptID" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" name="Pass" type="password" placeholder="******" required></p>
+             <p><button class="w3-button w3-green" type="submit">SUBMIT</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+    
+<!--<?php
+
+$mysqli=new mysqli('localhost','root','','attendance');
+if($_SERVER['REQUEST_METHOD']=="GET"){
+
+    $USN=mysqli_real_escape_string($mysqli, $_REQUEST['USN']);
+    $SNAME=mysqli_real_escape_string($mysqli, $_REQUEST['SNAME']);
+    $CID=mysqli_real_escape_string($mysqli, $_REQUEST['CID']);
+    $DeptID=mysqli_real_escape_string($mysqli, $_REQUEST['DeptID']);
+    $Pass=mysqli_real_escape_string($mysqli, $_REQUEST['Pass']);
+        
+    $sql="INSERT INTO student values('$USN', '$SNAME', '$CID', '$DeptID', '$Pass')";
+        if ($mysqli->query($sql) === TRUE) {
+    echo "Record added successfully";
+} else {
+    echo "Error: Password cannot be null " . $sql . "<br>" . mysqli_error($mysqli);
+}
+
+mysqli_close($mysqli);
+}
+ ?>-->
+<!-- Add Student Modal -->
+<div id="addStudent" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-green">
+      <span onclick="document.getElementById('addStudent').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Add Student</h1>
+    </div>
+    <div class="w3-container">
+      <p>Enter Details:</p>
+      <form action="admin.html" method="GET" >
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" name="USN" placeholder="USN" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" name="SNAME" placeholder="Name" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" name="CID" placeholder="CID" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" name="DeptID" placeholder="DeptID" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="text"  name="Pass" placeholder="******" required></p>
+             <p><button class="w3-button w3-green" type="submit">SUBMIT</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
+

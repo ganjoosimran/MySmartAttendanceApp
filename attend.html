@@ -1,0 +1,58 @@
+<html>
+<title>SmartAttendance</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="css/homecss.css">
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/teacher.css">
+<body>
+<!-- Navigation Bar -->
+<div class="w3-bar w3-black w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-mobile">Teacher's Portal</a>
+</div>
+<!--<?php
+$mysqli=new mysqli('localhost','root','','attendance');
+if($_SERVER['REQUEST_METHOD']=="POST"){
+
+    $SubCode=mysqli_real_escape_string($mysqli, $_REQUEST['SubCode']);
+    $CID=mysqli_real_escape_string($mysqli, $_REQUEST['CID']);
+       $sql="UPDATE attendregister set attendregister.Attended=attendregister.Attended+1 where attendregister.SubCode='$SubCode' and attendregister.CID='$CID' and attendregister.USN IN (Select register.USN from register);";
+    if ($mysqli->query($sql) === TRUE) {
+       
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
+    
+    $sql="UPDATE attendregister set attendregister.total=attendregister.total+1 where attendregister.SubCode='$SubCode' and attendregister.CID='$CID';";
+     if ($mysqli->query($sql) === TRUE) {
+        echo "Record updated successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
+    
+    mysqli_close($mysqli);
+}
+?>-->
+
+<!-- Take Attendance Modal -->
+<div class="bgimg w3-display-container w3-text-white">
+    <div class="w3-display-middle" style="white-space:nowrap;">
+        <div class="w3-container">
+            <p>Enter Subject Code:</p>
+            <form action="" method="POST" >
+                <p><input class="w3-input w3-padding-16 w3-border" type="text" name="SubCode" placeholder="Subject Code" required></p>
+                <p><input class="w3-input w3-padding-16 w3-border" type="text" name="CID" placeholder="CID" required></p>
+                <p><button class="w3-button w3-green" type="submit">Submit</button></p>
+            </form>
+                   </div>
+    </div>
+</div>
+<div class="w3-display-topright" style="white-space:nowrap;">
+    <div class="w3-container">
+        <br>
+        <a href="index.html" class="w3-bar-item w3-button w3-right w3-green w3-mobile">Logout</a>
+    </div>
+</div>
+</body>
+</html>
